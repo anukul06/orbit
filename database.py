@@ -26,11 +26,19 @@ def init_db():
     conn = get_db()
     cursor = conn.cursor()
 
-    # Users table
+    # Users table (with profile fields)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email TEXT UNIQUE NOT NULL
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            name TEXT DEFAULT '',
+            age TEXT DEFAULT '',
+            college TEXT DEFAULT '',
+            year_of_study TEXT DEFAULT '',
+            degree TEXT DEFAULT '',
+            skill_level TEXT DEFAULT '',
+            hours_per_day INTEGER DEFAULT 2
         )
     """)
 
